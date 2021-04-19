@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Path: {{ tree.name }}</title>
+	</head>
+	<body>
+		<h1>{{ tree.name }}</h1>
+		<ul>
+		{%- for item in tree.children %}
+				<li><a href="public/{{ item.name }}">{{ item.name }}</a></li>
+		{%- endfor %}
+		</ul>
+		<a href="files">Upload</a>
+	</body>
+</html>
