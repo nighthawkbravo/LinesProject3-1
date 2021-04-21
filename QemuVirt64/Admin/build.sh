@@ -16,6 +16,4 @@ cd buildroot-2021.02
 for i in ../patches/* ; do
    patch -p1 < $i
 done
-time make -j8
-
-
+time make -j$(nproc)

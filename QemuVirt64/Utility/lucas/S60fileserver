@@ -1,0 +1,33 @@
+#!/bin/sh
+umask 077
+
+start() {
+	echo "Starting fileserver..."
+	[ ! -d "/root/flask-file-server" ] && cd /root && gzip -d flask-file-server.tar.gz && tar xf flask-file-server.tar && rm flask-file-server.tar
+	/root/flask-file-server/run_file_server.sh
+	echo "OK"
+}
+stop() {
+	echo "stopping fileserver"
+ }
+restart() {
+	echo "restarting fileserver"
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+
